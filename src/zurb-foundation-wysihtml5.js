@@ -1,98 +1,101 @@
+// zurb-foundation-wysihtml5
+// based on bootstrap-wysihtml5-0.0.2
+// by garry@posthaven.com
+//
+
 !function($, wysi) {
     "use strict";
 
     var tpl = {
         "font-styles": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
-            return "<li class='dropdown'>" +
-              "<a class='btn dropdown-toggle" + size + "' data-toggle='dropdown' href='#'>" +
-              "<i class='icon-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
-              "</a>" +
-              "<ul class='dropdown-menu'>" +
+            var size = (options && options.size) ? ' button-'+options.size : '';
+            return "<div class='button dropdown secondary' href='#'>" +
+              "<i class='gicon-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
+              "<ul class='no-hover'>" +
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div' tabindex='-1'>" + locale.font_styles.normal + "</a></li>" +
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1' tabindex='-1'>" + locale.font_styles.h1 + "</a></li>" +
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2' tabindex='-1'>" + locale.font_styles.h2 + "</a></li>" +
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3' tabindex='-1'>" + locale.font_styles.h3 + "</a></li>" +
               "</ul>" +
-            "</li>";
+            "</div>";
         },
 
         "emphasis": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
+            var size = (options && options.size) ? ' button-'+options.size : '';
             return "<li>" +
-              "<div class='btn-group'>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='bold' title='CTRL+B' tabindex='-1'>" + locale.emphasis.bold + "</a>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='italic' title='CTRL+I' tabindex='-1'>" + locale.emphasis.italic + "</a>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='underline' title='CTRL+U' tabindex='-1'>" + locale.emphasis.underline + "</a>" +
+              "<div class='button-group'>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='bold' title='CTRL+B' tabindex='-1'><i class='gicon-bold'></i></a>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='italic' title='CTRL+I' tabindex='-1'><i class='gicon-italic'></i></a>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='underline' title='CTRL+U' tabindex='-1'>" + locale.emphasis.underline + "</a>" +
               "</div>" +
             "</li>";
         },
 
         "lists": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
+            var size = (options && options.size) ? ' button-'+options.size : '';
             return "<li>" +
-              "<div class='btn-group'>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "' tabindex='-1'><i class='icon-list'></i></a>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "' tabindex='-1'><i class='icon-th-list'></i></a>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "' tabindex='-1'><i class='icon-indent-right'></i></a>" +
-                "<a class='btn" + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "' tabindex='-1'><i class='icon-indent-left'></i></a>" +
+              "<div class='button-group'>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "' tabindex='-1'><i class='gicon-list'></i></a>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "' tabindex='-1'><i class='gicon-th-list'></i></a>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "' tabindex='-1'><i class='gicon-indent-right'></i></a>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "' tabindex='-1'><i class='gicon-indent-left'></i></a>" +
               "</div>" +
             "</li>";
         },
 
         "link": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
+            var size = (options && options.size) ? ' button-'+options.size : '';
             return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-link-modal modal hide fade'>" +
+              "<div class='zurb-foundation-wysihtml5-insert-link-modal reveal-modal hide fade'>" +
                 "<div class='modal-header'>" +
-                  "<a class='close' data-dismiss='modal'>&times;</a>" +
+                  "<a class='close-reveal-modal'>&#215;</a>" +
                   "<h3>" + locale.link.insert + "</h3>" +
                 "</div>" +
                 "<div class='modal-body'>" +
-                  "<input value='http://' class='bootstrap-wysihtml5-insert-link-url input-xlarge'>" +
+                  "<input value='http://' class='zurb-foundation-wysihtml5-insert-link-url input-xlarge'>" +
                 "</div>" +
                 "<div class='modal-footer'>" +
-                  "<a href='#' class='btn' data-dismiss='modal'>" + locale.link.cancel + "</a>" +
-                  "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.link.insert + "</a>" +
+                  "<a href='#' class='button secondary close-reveal-modal'>" + locale.link.cancel + "</a>" +
+                  "<a href='#' class='button close-reveal-modal action-insert'>" + locale.link.insert + "</a>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "' tabindex='-1'><i class='icon-share'></i></a>" +
+              "<a class='button secondary" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "' tabindex='-1'><i class='gicon-share'></i></a>" +
             "</li>";
         },
 
         "image": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
+            var size = (options && options.size) ? ' button-'+options.size : '';
             return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>" +
+              "<div class='zurb-foundation-wysihtml5-insert-image-modal reveal-modal hide fade'>" +
                 "<div class='modal-header'>" +
-                  "<a class='close' data-dismiss='modal'>&times;</a>" +
+                  "<a class='close-reveal-modal'>&#215;</a>" +
                   "<h3>" + locale.image.insert + "</h3>" +
                 "</div>" +
                 "<div class='modal-body'>" +
-                  "<input value='http://' class='bootstrap-wysihtml5-insert-image-url input-xlarge'>" +
+                  "<input value='http://' class='zurb-foundation-wysihtml5-insert-image-url input-xlarge'>" +
                 "</div>" +
                 "<div class='modal-footer'>" +
-                  "<a href='#' class='btn' data-dismiss='modal'>" + locale.image.cancel + "</a>" +
-                  "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.image.insert + "</a>" +
+                  "<a href='#' class='button secondary close-reveal-modal'>" + locale.image.cancel + "</a>" +
+                  "<a href='#' class='button close-reveal-modal action-insert'>" + locale.image.insert + "</a>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='icon-picture'></i></a>" +
+              "<a class='button secondary " + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='gicon-picture'></i></a>" +
             "</li>";
         },
 
         "html": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
+            var size = (options && options.size) ? ' button-'+options.size : '';
             return "<li>" +
-              "<div class='btn-group'>" +
-                "<a class='btn" + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "' tabindex='-1'><i class='icon-pencil'></i></a>" +
+              "<div class='button-group'>" +
+                "<a class='button secondary " + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "' tabindex='-1'><i class='gicon-pencil'></i></a>" +
               "</div>" +
             "</li>";
         },
 
         "color": function(locale, options) {
-            var size = (options && options.size) ? ' btn-'+options.size : '';
+            var size = (options && options.size) ? ' button-'+options.size : '';
             return "<li class='dropdown'>" +
-              "<a class='btn dropdown-toggle" + size + "' data-toggle='dropdown' href='#' tabindex='-1'>" +
+              "<a class='button dropdown-toggle" + size + "' data-toggle='dropdown' href='#' tabindex='-1'>" +
                 "<span class='current-color'>" + locale.colours.black + "</span>&nbsp;<b class='caret'></b>" +
               "</a>" +
               "<ul class='dropdown-menu'>" +
@@ -216,15 +219,15 @@
         initHtml: function(toolbar) {
             var changeViewSelector = "a[data-wysihtml5-action='change_view']";
             toolbar.find(changeViewSelector).click(function(e) {
-                toolbar.find('a.btn').not(changeViewSelector).toggleClass('disabled');
+                toolbar.find('a.button').not(changeViewSelector).toggleClass('disabled');
             });
         },
 
         initInsertImage: function(toolbar) {
             var self = this;
-            var insertImageModal = toolbar.find('.bootstrap-wysihtml5-insert-image-modal');
-            var urlInput = insertImageModal.find('.bootstrap-wysihtml5-insert-image-url');
-            var insertButton = insertImageModal.find('a.btn-primary');
+            var insertImageModal = toolbar.find('.zurb-foundation-wysihtml5-insert-image-modal');
+            var urlInput = insertImageModal.find('.zurb-foundation-wysihtml5-insert-image-url');
+            var insertButton = insertImageModal.find('a.action-insert');
             var initialValue = urlInput.val();
             var caretBookmark;
 
@@ -242,7 +245,7 @@
             urlInput.keypress(function(e) {
                 if(e.which == 13) {
                     insertImage();
-                    insertImageModal.modal('hide');
+                    insertImageModal.trigger('reveal:close');
                 }
             });
 
@@ -262,9 +265,9 @@
                 if (!activeButton) {
                     self.editor.currentView.element.focus(false);
                     caretBookmark = self.editor.composer.selection.getBookmark();
-                    insertImageModal.modal('show');
-                    insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
-                        e.stopPropagation();
+                    insertImageModal.reveal();
+                    insertImageModal.on('click', '.close-reveal-modal', function(e) {
+                        e.preventDefault();
                     });
                     return false;
                 }
@@ -276,9 +279,9 @@
 
         initInsertLink: function(toolbar) {
             var self = this;
-            var insertLinkModal = toolbar.find('.bootstrap-wysihtml5-insert-link-modal');
-            var urlInput = insertLinkModal.find('.bootstrap-wysihtml5-insert-link-url');
-            var insertButton = insertLinkModal.find('a.btn-primary');
+            var insertLinkModal = toolbar.find('.zurb-foundation-wysihtml5-insert-link-modal');
+            var urlInput = insertLinkModal.find('.zurb-foundation-wysihtml5-insert-link-url');
+            var insertButton = insertLinkModal.find('a.action-insert');
             var initialValue = urlInput.val();
             var caretBookmark;
 
@@ -301,7 +304,7 @@
             urlInput.keypress(function(e) {
                 if(e.which == 13) {
                     insertLink();
-                    insertLinkModal.modal('hide');
+                    insertLinkModal.trigger('reveal:close');
                 }
             });
 
@@ -321,9 +324,9 @@
                 if (!activeButton) {
                     self.editor.currentView.element.focus(false);
                     caretBookmark = self.editor.composer.selection.getBookmark();
-                    insertLinkModal.appendTo('body').modal('show');
-                    insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
-                        e.stopPropagation();
+                    insertLinkModal.appendTo('body').reveal();
+                    insertLinkModal.on('click', '.close-reveal-modal', function(e) {
+                        e.preventDefault();
                     });
                     return false;
                 }
@@ -368,7 +371,7 @@
             return methods.init.apply( this, arguments );
         } else {
             $.error( 'Method ' +  method + ' does not exist on jQuery.wysihtml5' );
-        }    
+        }
     };
 
     $.fn.wysihtml5.Constructor = Wysihtml5;
@@ -454,7 +457,7 @@
             emphasis: {
                 bold: "Bold",
                 italic: "Italic",
-                underline: "Underline"
+                underline: "U"
             },
             lists: {
                 unordered: "Unordered list",

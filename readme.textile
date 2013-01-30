@@ -1,6 +1,6 @@
 h1. Overview
 
-Bootstrap-wysihtml5 is a javascript plugin that makes it easy to create simple, beautiful wysiwyg editors with the help of "wysihtml5":https://github.com/xing/wysihtml5 and "Twitter Bootstrap":http://twitter.github.com/bootstrap/.
+zurb-foundation-wysihtml5 is a javascript plugin that makes it easy to create simple, beautiful wysiwyg editors with the help of "wysihtml5":https://github.com/xing/wysihtml5 and "Zurb Foundation":http://foundation.zurb.com/. It is a straightforward port of jhollingworth's very usable bootstrap-wysihtml5. 
 
 h1. Examples
 
@@ -8,24 +8,7 @@ h1. Examples
 
 h1. Quick Start
 
-If you are using rails use the "bootstrap-wysihtml5-rails gem":http://rubygems.org/gems/bootstrap-wysihtml5-rails.
-
-<pre>
-gem install bootstrap-wysihtml5-rails
-</pre>
-
-Otherwise, download "the latest version of bootstrap-wysihtml5":https://github.com/jhollingworth/bootstrap-wysihtml5/downloads.
-
-h2. Files to reference
-
-<pre>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5.css"></link>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"></link>
-<script src="js/wysihtml5-0.3.0.js"></script>
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-wysihtml5.js"></script>
-</pre>
+See index.html for example and what files are necessary. 
 
 h2. Usage
 
@@ -154,11 +137,11 @@ $('#some-textarea').wysihtml5('deepExtend', {
 });
 </pre>
 
-There's quite a bit that can be done with parserRules; see "wysihtml5's advanced parser ruleset":https://github.com/xing/wysihtml5/blob/master/parser_rules/advanced.js for details.  bootstrap-wysihtml5's default parserRules can be found "in the source":https://github.com/jhollingworth/bootstrap-wysihtml5/blob/master/src/bootstrap-wysihtml5.js (just search for 'parserRules' in the file).
+There's quite a bit that can be done with parserRules; see "wysihtml5's advanced parser ruleset":https://github.com/xing/wysihtml5/blob/master/parser_rules/advanced.js for details.  zurb-foundation-wysihtml5's default parserRules can be found "in the source":https://github.com/jhollingworth/bootstrap-wysihtml5/blob/master/src/bootstrap-wysihtml5.js (just search for 'parserRules' in the file).
 
 h3. Defaults
 
-You can change bootstrap-wysihtml5's defaults by altering:
+You can change zurb-foundation-wysihtml5's defaults by altering:
 
 <pre>
 $.fn.wysihtml5.defaultOptions
@@ -170,7 +153,7 @@ This object has the same structure as the options object you pass in to .wysihtm
 $(this).wysihtml5('resetDefaults') 
 </pre> 
 
-Operations on the defaults are not thread-safe; if you're going to change the defaults, you probably want to do it only once, after you load the bootstrap-wysihtml plugin and before you start instantiating your editors.
+Operations on the defaults are not thread-safe; if you're going to change the defaults, you probably want to do it only once, after you load the zurb-foundation-wysihtml plugin and before you start instantiating your editors.
 
 h2. The underlying wysihtml5 object
 
@@ -184,10 +167,10 @@ wysihtml5Editor.composer.commands.exec("bold");
 
 h2. I18n
 
-You can use Bootstrap-wysihtml5 in other languages. There are some translations available in the src/locales directory. You can include your desired one after the plugin and pass its key to the editor. Example:
+You can use zurb-foundation-wysihtml5 in other languages. There are some translations available in the src/locales directory. You can include your desired one after the plugin and pass its key to the editor. Example:
 
 <pre>
-<script src="src/locales/bootstrap-wysihtml5.pt-BR.js"></script>
+<script src="src/locales/zurb-foundation-wysihtml5.pt-BR.js"></script>
 <script type="text/javascript">
   $('#some-textarea').wysihtml5({locale: "pt-BR"});
 </script>
